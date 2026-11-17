@@ -22,7 +22,7 @@
 
 module "mongodb_instance" {
     source  = "terraform-aws-modules/ec2-instance/aws"
-    ami = data.aws_ami.vpn.id
+    ami = data.aws_ami.ami.id
     key_name = "DevOps_AWS"
     instance_type = "t3.small"
     subnet_id = local.db_subnet_id
@@ -39,7 +39,7 @@ module "mongodb_instance" {
 
 resource "aws_route53_record" "mongodb" {
   zone_id = var.zone_id
-  name    = "mongodb.roboshopservice.store"
+  name    = "mongodb"
   type    = "A"
   ttl     = 300
   records = [module.mongodb_instance.private_ip]

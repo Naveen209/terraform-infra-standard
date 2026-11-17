@@ -1,3 +1,4 @@
+#!/bin/bash
 set -e
 yum install git -y
 cd /root
