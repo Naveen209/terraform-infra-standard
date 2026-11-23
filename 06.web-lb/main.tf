@@ -1,5 +1,5 @@
 resource "aws_lb" "web_lb" {
-  name               = "web_lb"
+  name               = "web-app"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [data.aws_ssm_parameter.web_lb_sg.value]
@@ -54,7 +54,7 @@ resource "aws_lb_listener" "front_end" {
     type = "fixed-response"
 
     fixed_response {
-      content_type = "text"
+      content_type = "text/plain"
       message_body = "This is Fixed response from web lb HTTPS"
       status_code  = "200"
     }

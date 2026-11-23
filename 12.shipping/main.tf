@@ -3,7 +3,7 @@ module "shipping" {
   project_name = var.project_name
   Environment = var.Environment
   common_tags = var.common_tags
-  vpc_id = data.aws_ssm_parameter.vpc_id.id
+  vpc_id = data.aws_ssm_parameter.vpc_id.value
 
   #target group
   target_group_protocol = var.target_group_protocol

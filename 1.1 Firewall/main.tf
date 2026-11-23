@@ -293,7 +293,7 @@ resource "aws_security_group_rule" "mysql_shipping"{
   #cidr_blocks       = ["${chomp(data.http.my_public_ip.response_body)}/32"]
   #we use source security group instead of CIDR blocks
   source_security_group_id = module.shipping_sg.sg_id
-  security_group_id = module.redis_sg.sg_id
+  security_group_id = module.mysql_sg.sg_id
 }
 
 resource "aws_security_group_rule" "mysql_vpn"{
@@ -304,7 +304,7 @@ resource "aws_security_group_rule" "mysql_vpn"{
   #cidr_blocks       = ["${chomp(data.http.my_public_ip.response_body)}/32"]
   #we use source security group instead of CIDR blocks
   source_security_group_id = module.vpn_sg.sg_id
-  security_group_id = module.redis_sg.sg_id
+  security_group_id = module.mysql_sg.sg_id
 }
 
 resource "aws_security_group_rule" "rabbitmq_vpn"{
