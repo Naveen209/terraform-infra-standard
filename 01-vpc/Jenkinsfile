@@ -2,25 +2,30 @@ pipeline {
     agent {
     label 'Agent-1'
     } 
+    options{
+        ansiColor('xterm')
+    }
 
     stages {
         stage('Init') {
             steps {
-                sh 'pwd'
-                cd '01-vpc'
-                sh 'ls -lrth'
-                echo 'Initialising..'
-                sh 'terraform init'
+                sh '''
+                pwd
+                cd 01-vpc
+                ls -lrth
+                terraform init
+                '''
                 
             }
         }
         stage('Plan') {
             steps {
-                sh 'pwd'
-                cd '01-vpc'
-                sh 'ls -lrth'
-                echo 'Planning..'
-                sh 'terraform plan'
+                sh '''
+                pwd
+                cd 01-vpc
+                ls -lrth
+                terraform plan
+                '''
                 
             }
         }
