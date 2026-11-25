@@ -29,11 +29,17 @@ pipeline {
                 
             }
         }
+        stage('Approval'){
+            steps{
+                input 'Shall I apply ?'
+            }
+             
+        }
         
-        stage('Deploy') {
+        stage('Apply') {
             steps {
                 
-                echo 'Deploying....'
+                echo 'Applying....'
                 sh 'pwd'
                 sh 'ls -lrth'
                 
